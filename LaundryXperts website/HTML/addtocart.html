@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="addtocart.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+        <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+    </head>
+
+    <header>
+        <nav class="navbar">
+            
+            <a href="#" class="navlogo">Laundry-Xperts</a>
+    
+            <div class="navmenu" id="nav__menu">
+                <ul class="navlist" id="nav__list">
+                    <li class="navitem">
+                        <a href="page2_home.html" class="navlink">Home</a>
+                    </li>
+                    <li class="navitem">
+                        <a href="addtocart.html" class="navlink">Cart</a>
+                    </li>
+                    <li class="navitem">
+                        <a href="about_us.html" class="navlink">About us</a>
+                    </li>
+                    <li class="navitem">
+                        <a href="contactus.html" class="navlink">Contact-Us</a>
+                    </li>
+                </ul>
+                <div class="navclose">
+                    <i class="ri-close-fill" id="nav__close"></i>
+                </div>
+            </div>
+            
+            <div class="navops">
+                <i class="ri-search-2-line" id="nav__search"></i>
+                <i class="ri-user-3-line" id="nav__login"></i>
+                <div class="navtoggle">
+                    <i class="ri-menu-3-line" id="nav__toggle"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <body>
+        <div class="search" id="search">
+            <form class="search__form">
+                <i class="ri-search-2-line" id="searchicon"></i>
+                <input type="search" class="search_input" placeholder="What are you searching for?">
+            </form>
+            <i class="ri-close-line" id="search_close"></i>
+        </div>
+    
+        <div class="login" id="login">
+            <form  class="loginform">
+               <h2 class="logintitle">Welcome User</h2>
+               <i class="ri-user-smile-fill" id="usericon"></i>
+               <br>
+               <div class="logingroup">
+                    <div class="diamond">
+                        <i class="ri-vip-diamond-line"></i>
+                        &nbsp;&nbsp;Diamond Customer
+                    </div>
+               </div>
+    
+               <div>
+                    <button type="button" class="loginbutton" id="logout"> Log Out </button>
+               </div>
+            </form>
+    
+            <i class="ri-close-line" id="login_close"></i>
+        </div>
+
+
+        <div class="main">
+            <div class="headbar">
+                <p class="logo">items in cart: &nbsp;</p>
+                <div class="cart"><p id="count">0</p></div>
+            </div>
+            <div class="container">
+                <div id="root"></div>
+                <div class="sidebar">
+                    <div class="head"><p>My Cart</p></div>
+                    <div id="cartItem">Your cart is empty</div>
+                    <div class="foot">
+                        <h3>Total</h3>
+                        <h2 id="total">Rs 0.00</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="addtocart.js"></script> 
+
+        <script>
+            const navMenu = document.getElementById('nav__menu'),
+    navToggle = document.getElementById('nav__toggle'),
+    navClose = document.getElementById('nav__close');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu');
+    });
+
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu');
+    });
+
+    // Search
+
+    const search = document.getElementById('search'),
+        searchButton = document.getElementById('nav__search'),
+        searchClose = document.getElementById('search_close');
+
+    searchButton.addEventListener('click', () => {
+        search.classList.add('show-search');
+    });
+
+    searchClose.addEventListener('click', () => {
+        search.classList.remove('show-search');
+    });
+
+    // login
+
+    const login = document.getElementById('login');
+    const loginButton = document.getElementById('nav__login');
+    const loginClose = document.getElementById('login_close');
+
+    loginButton.addEventListener('click', () => {
+        login.classList.add('show-login');
+    });
+
+    loginClose.addEventListener('click', () => {
+        login.classList.remove('show-login');
+    });
+
+    // logout
+
+    var logout_button=document.getElementById("logout");
+
+    logout_button.addEventListener("click",function(){
+        window.location.href="index.html";
+    });
+    
+    </script>
+    </body>
+</html>

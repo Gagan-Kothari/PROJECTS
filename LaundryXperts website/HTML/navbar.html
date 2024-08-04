@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+
+    <style>
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
+            z-index: var(--z-fixed);
+        }
+
+        .navmenu{
+            list-style-type: none;
+            padding: 0;
+            margin-bottom:0;
+        }
+
+        .navbar{
+            height: var(--header-height);
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navlogo{
+            margin-left:15px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            text-decoration:none;
+            color: white;
+            font-weight: var(--font-semi-bold);
+            transition: color 0.4s;
+        }
+        .navops{
+            display:flex;
+            align-items:center;
+            column-gap: 1rem;
+        }
+
+        #nav__search,
+        #nav__toggle,
+        #nav__login{
+            font-size: 2rem;
+            color: white;
+            cursor:pointer;
+            transition: color 0.4s;
+        }
+
+        #nav__close{
+            color:black;
+            font-size:2rem;
+        }
+
+        :is(#nav__search,
+        #nav__toggle,
+        #nav__login,
+        #nav__close,
+        .navlink):hover{
+            color: rgb(37, 167, 214);
+        }
+
+        @media screen {
+            .navmenu{
+                position:fixed;
+                top:-100%;
+                left:0;
+                background-color: white;
+                border-radius:5px;
+                width: 100%;
+                padding-block: 4.5rem 4rem;
+                transition: top 0.4s;
+            }
+        }
+
+        .navlist{
+            display:flex;
+            flex-direction: column;
+            row-gap: 2.5rem;
+            font-size:1.5rem;
+            text-align: center;
+            list-style:none;
+        }
+
+        .navlink{
+            color: var(--title-color);
+            font-weight: var(--font-semi-bold);
+            transition: color 0.4s;
+            text-decoration: none;
+            list-style:none;
+        }
+
+        .navclose{
+            position:absolute;
+            top: 1.15rem;
+            right:1.5rem;
+        }
+
+        .show-menu{
+            top:0;
+        }
+
+        /* Search */
+        .search,.login{
+            position: fixed;
+            top:0;
+            left:0;
+            width:99%;
+            height:100%;
+            z-index: var(--z-modal);
+            backdrop-filter: blur(10px);
+            padding: 8rem 0.5rem 0;
+            opacity:0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+
+        .search__form{
+            display:flex;
+            align-items: center;
+            column-gap: 1rem;
+            background-color: white;
+            box-shadow:0 8px 32px hsla(230, 75%, 32%, .2);
+            padding-inline: 1rem;
+            border-radius:0.5rem;
+            transform:translateY(-1rem);
+            transition: transform 0.5s;
+        }
+
+        .search_input{
+            width:100%;
+            border:none;
+            padding-block:1rem;
+            background-color: var(--container-color);
+            color: var(--text-color);
+            outline:none;
+        }
+
+        .search_input::placeholder{
+            color:var(--text-color);
+        }
+
+        #searchicon{
+            font-size:1.25rem;
+            padding-block: 1rem;
+            color:var(--title-color);
+            color: var(--text-color);
+            
+        }
+
+        #search_close,#login_close{
+            position:absolute;
+            top:2rem;
+            right:2rem;
+            cursor:pointer;
+            color: white;
+            font-size:1.5rem;
+
+        }
+        .show-search{
+            opacity:1;
+            pointer-events:initial;
+        }
+        .show-search.search__form{
+            transform: translateY(0);
+        }
+
+        /* Login */
+        .loginform,
+        .logingroup{
+            display:grid;
+            margin:auto;
+        }
+
+        .loginform{
+            background-color: rgba(255, 255, 255, 0.615);
+            padding: 2rem;
+            width:30%;
+            border-radius:1rem;
+            box-shadow: 0 8px 32px hsla(230, 75%, 32%, .2);
+            row-gap:1.5rem;
+            text-align:center;
+            transform: translateY(-1rem);
+            transition:transform 0.5s;
+        }
+
+        .logintitle{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size:1.5rem;
+        }
+
+        .logingroup{
+            row-gap:1rem;
+        }
+
+        .loginlabel{
+            display:flex;
+            text-align:initial;
+            margin-bottom: 0.25rem;
+        }
+
+        .loginbutton{
+            display:inline-block;
+            background-color:rgb(103,150,160);
+            color:white;
+            width:90%;
+            margin-top:1rem;
+            padding:1rem;
+            border-radius:0.5rem;
+            cursor:pointer;
+            transition: box-shadow 0.5s;
+        }
+
+        .loginbutton:hover{
+            box-shadow: 0 2px 20px rgb(24, 63, 72);
+        }
+
+        .show-login{
+            opacity:1;
+            pointer-events: initial;
+        }
+
+        .show-login.loginform{
+            transform: translateY(0);
+        }
+
+        #usericon{
+            transform:scale(4);
+        }
+
+        .diamond{
+            display:flex;
+            transform: scale(1.5)
+        }
+    </style>
+</head>
+
+<header>
+    <nav class="navbar">
+        
+        <a href="#" class="navlogo">Laundry-Xperts</a>
+
+        <div class="navmenu" id="nav__menu">
+            <ul class="navlist" id="nav__list">
+                <li class="navitem">
+                    <a href="page2_home.html" class="navlink">Home</a>
+                </li>
+                <li class="navitem">
+                    <a href="addtocart.html" class="navlink">Cart</a>
+                </li>
+                <li class="navitem">
+                    <a href="about_us.html" class="navlink">About us</a>
+                </li>
+                <li class="navitem">
+                    <a href="contactus.html" class="navlink">Contact-Us</a>
+                </li>
+            </ul>
+            <div class="navclose">
+                <i class="ri-close-fill" id="nav__close"></i>
+            </div>
+        </div>
+        
+        <div class="navops">
+            <i class="ri-search-2-line" id="nav__search"></i>
+            <i class="ri-user-3-line" id="nav__login"></i>
+            <div class="navtoggle">
+                <i class="ri-menu-3-line" id="nav__toggle"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="search" id="search">
+        <form class="search__form">
+            <i class="ri-search-2-line" id="searchicon"></i>
+            <input type="search" class="search_input" placeholder="What are you searching for?">
+        </form>
+        <i class="ri-close-line" id="search_close"></i>
+    </div>
+
+    <div class="login" id="login">
+        <form  class="loginform">
+           <h2 class="logintitle">Welcome User</h2>
+           <i class="ri-user-smile-fill" id="usericon"></i>
+           <br>
+           <div class="logingroup">
+                <div class="diamond">
+                    <i class="ri-vip-diamond-line"></i>
+                    &nbsp;&nbsp;Diamond Customer
+                </div>
+           </div>
+
+           <div>
+                <button type="submit" class="loginbutton" onclick="logout()"> Log Out </button>
+           </div>
+        </form>
+
+        <i class="ri-close-line" id="login_close"></i>
+     </div>
+
+    <!-- Script -->
+    <script>
+        const navMenu = document.getElementById('nav__menu'),
+        navToggle = document.getElementById('nav__toggle'),
+        navClose = document.getElementById('nav__close');
+    
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.add('show-menu');
+        });
+    
+        navClose.addEventListener('click', () => {
+            navMenu.classList.remove('show-menu');
+        });
+    
+        // Search
+    
+        const search = document.getElementById('search'),
+            searchButton = document.getElementById('nav__search'),
+            searchClose = document.getElementById('search_close');
+    
+        searchButton.addEventListener('click', () => {
+            search.classList.add('show-search');
+        });
+    
+        searchClose.addEventListener('click', () => {
+            search.classList.remove('show-search');
+        });
+    
+        // login
+    
+        const login = document.getElementById('login');
+        const loginButton = document.getElementById('nav__login');
+        const loginClose = document.getElementById('login_close');
+    
+        loginButton.addEventListener('click', () => {
+            login.classList.add('show-login');
+        });
+    
+        loginClose.addEventListener('click', () => {
+            login.classList.remove('show-login');
+        });
+    
+        // logout
+
+        function logout() {
+            window.location.replace("login_page.html");
+        }
+
+    </script>
+</body>
+</html>

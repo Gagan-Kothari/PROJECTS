@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Laundry-Xperts</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="C:\Users\Gagan\Desktop\LaundryXperts website\CSS\style.css">
+        <link rel="icon" href="./Images/favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/60fedd8558.js" crossorigin="anonymous"></script>
+
+<!-- Bootstrap CSS -->
+
+<script src="https://kit.fontawesome.com/60fedd8558.js" crossorigin="anonymous"></script>    
+<title>Laundry-Xperts</title>
+
+
+<style>
+  body{
+    background-color: #0f0f0f;
+  }
+  p{
+    color:#CCCCCC
+  }
+  li{
+    color:#CCCCCC
+  }
+  td{
+    color:#CCCCCC
+  }
+
+  header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
+            z-index: 3;
+        }
+
+        .navmenu{
+            list-style-type: none;
+            padding: 0;
+            margin-bottom:0;
+        }
+
+        .navbar{
+            height: var(--header-height);
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navlogo{
+            margin-left:15px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            text-decoration:none;
+            color: white;
+            font-weight: var(--font-semi-bold);
+            transition: color 0.4s;
+        }
+        .navops{
+            display:flex;
+            align-items:center;
+            column-gap: 1rem;
+        }
+
+        #nav__search,
+        #nav__toggle,
+        #nav__login{
+            font-size: 2.5rem;
+            color: white;
+            cursor:pointer;
+            transition: color 0.4s;
+        }
+
+        #nav__close{
+            color:#0f0f0f;
+            font-size:2rem;
+        }
+
+        :is(#nav__search,
+        #nav__toggle,
+        #nav__login,
+        #nav__close,
+        .navlink):hover{
+            /* color: rgb(37, 167, 214); */
+            color:#fe8040;
+        }
+
+        @media screen {
+            .navmenu{
+                position:fixed;
+                top:-100%;
+                left:0;
+                background-color: white;
+                border-radius:5px;
+                width: 100%;
+                padding-block: 4.5rem 4rem;
+                transition: top 0.4s;
+            }
+        }
+
+        .navlist{
+            display:flex;
+            flex-direction: column;
+            row-gap: 2.5rem;
+            font-size:1.5rem;
+            text-align: center;
+            list-style:none;
+        }
+
+        .navlink{
+            color: var(--title-color);
+            font-weight: var(--font-semi-bold);
+            transition: color 0.4s;
+            text-decoration: none;
+            list-style:none;
+        }
+
+        .navclose{
+            position:absolute;
+            top: 1.15rem;
+            right:1.5rem;
+        }
+
+        .show-menu{
+            top:0;
+        }
+
+        /* Search */
+        .search,.login{
+            position: fixed;
+            top:0;
+            left:0;
+            width:99%;
+            height:100%;
+            z-index: 4;
+            backdrop-filter: blur(10px);
+            padding: 8rem 0.5rem 0;
+            opacity:0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+
+        .search__form{
+            display:flex;
+            align-items: center;
+            column-gap: 1rem;
+            background-color: white;
+            box-shadow:0 8px 32px hsla(230, 75%, 32%, .2);
+            padding-inline: 1rem;
+            border-radius:0.5rem;
+            transform:translateY(-1rem);
+            transition: transform 0.5s;
+        }
+
+        .search_input{
+            width:100%;
+            border:none;
+            padding-block:1rem;
+            background-color: var(--container-color);
+            color: var(--text-color);
+            outline:none;
+        }
+
+        .search_input::placeholder{
+            color:var(--text-color);
+        }
+
+        #searchicon{
+            font-size:1.25rem;
+            padding-block: 1rem;
+            color:var(--title-color);
+            color: var(--text-color);
+            
+        }
+
+        #search_close,#login_close{
+            position:absolute;
+            top:2rem;
+            right:2rem;
+            cursor:pointer;
+            color: white;
+            font-size:1.5rem;
+
+        }
+        .show-search{
+            opacity:1;
+            pointer-events:initial;
+        }
+        .show-search.search__form{
+            transform: translateY(0);
+        }
+
+        /* Login */
+        .loginform,
+        .logingroup{
+            display:grid;
+            margin:auto;
+        }
+
+        .loginform{
+            background-color: rgba(255, 255, 255, 0.615);
+            padding: 2rem;
+            width:30%;
+            border-radius:1rem;
+            box-shadow: 0 8px 32px hsla(230, 75%, 32%, .2);
+            row-gap:1.5rem;
+            text-align:center;
+            transform: translateY(-1rem);
+            transition:transform 0.5s;
+        }
+
+        .logintitle{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size:1.5rem;
+        }
+
+        .logingroup{
+            row-gap:1rem;
+        }
+
+        .loginlabel{
+            display:flex;
+            text-align:initial;
+            margin-bottom: 0.25rem;
+        }
+
+        .loginbutton{
+            display:inline-block;
+            background-color:#fe8040;
+            color:white;
+            width:90%;
+            margin-top:1rem;
+            padding:1rem;
+            border-radius:0.5rem;
+            cursor:pointer;
+            transition: box-shadow 0.5s;
+        }
+
+        .loginbutton:hover{
+            box-shadow: 0 2px 20px rgb(24, 63, 72);
+        }
+
+        .show-login{
+            opacity:1;
+            pointer-events: initial;
+        }
+
+        .show-login.loginform{
+            transform: translateY(0);
+        }
+
+        #usericon{
+            transform:scale(4);
+        }
+
+        .diamond{
+            display:flex;
+            transform: scale(1.5)
+        }
+        
+        .dlogo{
+            color: rgb(0, 136, 255);
+        }
+</style>
+<header>
+  <nav class="navbar">
+      
+      <a href="#" class="navlogo">Laundry-Xperts</a>
+
+      <div class="navmenu" id="nav__menu">
+          <ul class="navlist" id="nav__list">
+              <li class="navitem">
+                  <a href="page2_home.html" class="navlink">Home</a>
+              </li>
+              <li class="navitem">
+                  <a href="addtocart.html" class="navlink">Cart</a>
+              </li>
+              <li class="navitem">
+                  <a href="about_us.html" class="navlink">About us</a>
+              </li>
+              <li class="navitem">
+                  <a href="contactus.html" class="navlink">Contact-Us</a>
+              </li>
+          </ul>
+          <div class="navclose">
+              <i class="ri-close-fill" id="nav__close"></i>
+          </div>
+      </div>
+      
+      <div class="navops">
+          <i class="ri-search-2-line" id="nav__search"></i>
+          <i class="ri-user-3-line" id="nav__login"></i>
+          <div class="navtoggle">
+              <i class="ri-menu-3-line" id="nav__toggle"></i>
+          </div>
+      </div>
+  </nav>
+</header>
+
+  </head>
+
+  <body>
+    <div class="bgimage"> </div>
+
+    <div class="search" id="search">
+        <form class="search__form">
+            <i class="ri-search-2-line" id="searchicon"></i>
+            <input type="search" class="search_input" id="searchinput" placeholder="What are you searching for?" onkeypress="handlekeypress(event)">
+        </form>
+        <i class="ri-close-line" id="search_close"></i>
+    </div>
+
+    <div class="login" id="login">
+        <form  class="loginform">
+           <h2 class="logintitle">Welcome User</h2>
+           <i class="ri-user-smile-fill" id="usericon"></i>
+           <br>
+           <div class="logingroup">
+                <div class="diamond">
+                    <i class="ri-vip-diamond-line dlogo"></i>
+                    &nbsp;&nbsp;Diamond Customer
+                </div>
+           </div>
+
+           <div>
+                <button type="button" class="loginbutton" id="logout"> Log Out </button>
+           </div>
+        </form>
+
+        <i class="ri-close-line" id="login_close"></i>
+     </div>
+
+  
+    <section style="padding:20px 70px" id="content">
+        <h1 class="mid1-sz" style="font-weight: 450!important;padding: 0px!important;text-align: center;border-bottom: 2px solid #000;padding-bottom: 5px!important;margin-bottom: 15px;color: #fe8040;margin-top: 100px;">Payment Policy</h1>
+        <p style="color:#fe8040;font-weight: 500;margin-top: 10px"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> How do I pay for a Apni Dukaan purchase?</p>
+        <p>Apni Dukaan offers you multiple payment methods. Whatever your online mode of payment, you can rest assured that Apni Dukaan's trusted payment gateway partners use secure encryption technology to keep your transaction details confidential at all times.</p>
+        <p style="margin-top: 5px">You may use Internet Banking, Gift Card, Cash on Delivery and Wallet to make your purchase.</p>
+        <p style="margin-top: 5px">Flipkart also accepts payments made using Visa, MasterCard, Maestro and American Express credit/debit cards in India and 21 other countries.</p>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> What is Cash on Delivery?</p>
+        <p>If you are not comfortable making an online payment on Apni-Dukaan.com, you can opt for the Cash on Delivery (C-o-D) payment method instead. With C-o-D you can pay in cash at the time of actual delivery of the product at your doorstep, without requiring you to make any advance payment online.</p>
+        <p>The maximum order value for a Cash on Delivery (C-o-D) payment is ₹50,000. It is strictly a cash-only payment method. Gift Cards or store credit cannot be used for C-o-D orders. Foreign currency cannot be used to make a C-o-D payment. Only Indian Rupees accepted.</p>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> How do I pay using a credit/debit card?</p>
+        <p>We accept payments made by credit/debit cards issued in India and 21 other countries.</p>
+        <p style="font-weight: 500">Credit Cards</p>
+        <p>We accept payments made using Visa, MasterCard and American Express credit cards.</p>
+        <p>To pay using your credit card at checkout, you will need your card number, expiry date, three-digit CVV number (found on the backside of your card). After entering these details, you will be redirected to the bank's page for entering the online 3D Secure password.</p>
+        <p style="font-weight: 500">Debit Cards</p>
+        <p>We accept payments made using Visa, MasterCard and Maestro debit cards.</p>
+        <p>To pay using your debit card at checkout, you will need your card number, expiry date (optional for Maestro cards), three-digit CVV number (optional for Maestro cards). You will then be redirected to your bank's secure page for entering your online password (issued by your bank) to complete the payment.</p>
+        <p>Internationally issued credit/debit cards cannot be used for Flyte, Wallet and eGV payments/top-ups.</p>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> Is it safe to use my credit/debit card on Apni Dukaan?</p>
+        <p>Your online transaction on Apni Dukaan is secure with the highest levels of transaction security currently available on the Internet. Apni Dukaan uses 256-bit encryption technology to protect your card information while securely transmitting it to the respective banks for payment processing.</p>
+        <p>All credit card and debit card payments on Apni Dukaan are processed through secure and trusted payment gateways managed by leading banks. Banks now use the 3D Secure password service for online transactions, providing an additional layer of security through identity verification.</p>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> What is a 3D Secure password?</p>
+        <p>The 3D Secure password is implemented by VISA and MasterCard in partnership with card issuing banks under the "Verified by VISA" and "Mastercard SecureCode" services, respectively.</p>
+        <p>The 3D Secure password adds an additional layer of security through identity verification for your online credit/debit card transactions. This password, which is created by you, is known only to you. This ensures that only you can use your card for online purchases.</p>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> How can I get the 3D Secure password for my credit/debit card?</p>
+        <p>You can register for the 3D Secure password for your credit/debit card by visiting your bank's website. The registration links for some of the banks have been provided below for easy reference:</p>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>State Bank of India</th>
+              <td>ICICI Bank</td>
+              <td>HDFC Bank</td>
+              <td>Punjab National Bank</td>
+            </tr>
+            <tr>
+              <td>Axis Bank</th>
+              <td>Corporation Bank</td>
+              <td>Andhra Bank</td>
+              <td>Bank of Baroda</td>
+            </tr>
+            <tr>
+              <td>Standard Chartered India</th>
+              <td>Union Bank of India</td>
+              <td>Central Bank of India</td>
+              <td>Citibank</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> Can I use my bank's Internet Banking feature to make a payment?</p>
+        <p>Yes. Apni Dukaan offers you the convenience of using your bank's Internet Banking service to make a payment towards your order. With this you can directly transfer funds from your bank account, while conducting a highly secure transaction.</p>
+        <p>We accept payment through Internet Banking for the following banks:</p>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>State Bank of India</th>
+              <td>ICICI Bank</td>
+              <td>HDFC Bank</td>
+              <td>Punjab National Bank</td>
+            </tr>
+            <tr>
+              <td>Axis Bank</th>
+              <td>Corporation Bank</td>
+              <td>Andhra Bank</td>
+              <td>Bank of Baroda</td>
+            </tr>
+            <tr>
+              <td>Standard Chartered India</th>
+              <td>Union Bank of India</td>
+              <td>Central Bank of India</td>
+              <td>Citibank</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> Can I make a credit/debit card or Internet Banking payment on Apni Dukaan through my mobile?</p>
+        <p>Yes, you can make credit card payments through the Apni Dukaan mobile site and application. Apni Dukaan uses 256-bit encryption technology to protect your card information while securely transmitting it to the secure and trusted payment gateways managed by leading banks.</p>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i>  How do I place a Cash on Delivery (C-o-D) order?</p>
+        <p>All items that have the "Cash on Delivery Available" icon are valid for order by Cash on Delivery</p>
+        <p>Add the item(s) to your cart and proceed to checkout. When prompted to choose a payment option, select "Pay By Cash on Delivery". Enter the CAPTCHA text as shown, for validation.</p>
+        <p>Once verified and confirmed, your order will be processed for shipment in the time specified, from the date of confirmation. You will be required to make a cash-only payment to our courier partner at the time of delivery of your order to complete the payment.</p>
+        <p>Terms & Conditions:</p>
+        <ul>
+            <li>The maximum order value for C-o-D is ₹50,000</li>
+            <li>Gift Cards or Store Credit cannot be used for C-o-D orders</li>
+            <li>Cash-only payment at the time of delivery.</li>
+        </ul>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> What is Apni Dukaan's credit card EMI option?</p>
+        <p>With Apni Dukaan's credit card EMI option, you can choose to pay in easy installments of 3, 6, 9, 12, 18*, or 24 months* with credit cards from the following banks:</p>
+        <ul>
+            <li>HDFC</li>
+            <li>Citi</li>
+            <li>ICICI</li>
+            <li>Kotak</li>
+            <li>Axis</li>
+            <li>Induslnd</li>
+            <li>SBI</li>
+            <li>Standard Chartered</li>
+            <li>HSBC</li>
+        </ul>
+        <p style="color:#fe8040;margin-top: 15px;font-weight: 500"><i style="margin-right: 8px" class="fa fa-question-circle" aria-hidden="true"></i> How do I make a payment using Apni Dukaan's credit card EMI option?</p>
+        <p>Once you've added the desired items to your Apni Dukaan shopping cart, proceed with your order as usual by entering your address. When you're prompted to choose a payment mode for your order, select 'EMI' & follow these simple steps:</p>
+        <ul>
+            <li>Choose your credit-card issuing bank you wish to pay from</li>
+            <li>Select the EMI plan of your preference</li>
+            <li>Enter your credit card details</li>
+            <li>Click 'Save and Pay'</li>
+        </ul>
+        <p>Please note that the full amount will be charged on your card the day of the transaction.</p>
+    </section>
+    
+    <footer class="bg-dark text-white pt-5 pb-4" style="font-size: 18px;">
+      <div class="container text-md-left">
+        <div class="row text-md-left">
+          <div class="col mt-3" style="color:#808080;">
+            <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Get to know us</h5>
+            <p>
+              <a href="./about_us.html" class="text-white" style="text-decoration: none;">About us</a>
+            </p>
+            <p>
+              <a href="about_us.html" class="text-white" style="text-decoration: none;">Careers</a>
+            </p>
+            <p>
+              <a href="./cares.html" class="text-white" style="text-decoration: none;">Laundry Xperts cares</a>
+            </p>
+            <p>
+              <a href="about_us.html" class="text-white" style="text-decoration: none;">Our Partners</a>
+            </p>
+          </div>
+          <div class="col mt-3"  style="color:#808080;">
+            <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Let us help you</h5>
+              <p>
+                <a href="./paypolicy.html" class="text-white" style="text-decoration: none;">Payments</a>
+              </p>
+              <p>
+                <a href="./shippolicy.html" class="text-white" style="text-decoration: none;">Shipping</a>
+              </p>
+              <p>
+                <a href="contactus.html" class="text-white" style="text-decoration: none;">Report an issue</a>
+              </p>
+              <p>
+                <a href="contactus.html" class="text-white" style="text-decoration: none;">Contact us</a>
+              </p>
+          </div>
+          <div class="col mt-3" style="color:#808080;">
+            <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Policy</h5>
+              <p>
+                <a href="" class="text-white" style="text-decoration: none;">Return policy</a>
+              </p>
+              <p>
+                <a href="" class="text-white" style="text-decoration: none;">Time of use</a>
+              </p>
+              <p>
+                <a href="./privacy.html" class="text-white" style="text-decoration: none;">Privacy</a>
+              </p>
+          </div>
+          <div class="col mt-3" style="color:#808080;">
+            <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Make money with us</h5>
+              <p>
+              <p>
+                <a href="./Partner Stores.html" class="text-white" style="text-decoration: none;">Become our partner</a>
+              </p>
+          </div>
+          <div class="col mt-3" style="color:#808080;">
+            <div>
+              <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Connect with us</h5>
+              <p>
+                <a href="https://www.facebook.com" class="text-white" style="text-decoration: none;">
+                  <i class="fab fa-facebook-square"></i>
+                  Facebook
+                </a>
+              </p>
+              <p>
+                <a href="https://twitter.com" class="text-white" style="text-decoration: none;">
+                  <i class="fab fa-twitter-square"></i>
+                  Twitter
+                </a>
+              </p>
+              <p>
+                <a href="https://instagram.com" class="text-white" style="text-decoration: none;">
+                  <i class="fab fa-instagram-square"></i>
+                  Instagram
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <div class="row align-items-center">
+          <div class="text-center">
+            Copyright &copy; and &reg; Since 1995 Under Laundry-Xperts.com | Gagan Kothari & Ansh Desai
+          </div>
+        </div>
+      </div>
+      <a class="scrollToTop" href="#"></a>
+    </footer>
+    
+    <!-- scroll to top button -->
+    <button id = "btnScrollToTop">
+      <i class="material-icons">arrow_upward</i>
+  </button>
+  
+  <script>
+      const btnScrollToTop = document.querySelector("#btnScrollToTop");
+       btnScrollToTop.addEventListener("click", function () {
+          window.scrollTo(0,0); }
+      );
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    </script>
+
+    <script>
+      const navMenu = document.getElementById('nav__menu'),
+    navToggle = document.getElementById('nav__toggle'),
+    navClose = document.getElementById('nav__close');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu');
+    });
+
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu');
+    });
+
+    // Search
+
+    const search = document.getElementById('search'),
+        searchButton = document.getElementById('nav__search'),
+        searchClose = document.getElementById('search_close');
+
+    searchButton.addEventListener('click', () => {
+        search.classList.add('show-search');
+    });
+
+    searchClose.addEventListener('click', () => {
+        search.classList.remove('show-search');
+    });
+
+    // login
+
+    const login = document.getElementById('login');
+    const loginButton = document.getElementById('nav__login');
+    const loginClose = document.getElementById('login_close');
+
+    loginButton.addEventListener('click', () => {
+        login.classList.add('show-login');
+    });
+
+    loginClose.addEventListener('click', () => {
+        login.classList.remove('show-login');
+    });
+
+    // logout
+
+    var logout_button=document.getElementById("logout");
+
+    logout_button.addEventListener("click",function(){
+        window.location.href="index.html";
+    });
+    </script>
+  </body>
+</html>

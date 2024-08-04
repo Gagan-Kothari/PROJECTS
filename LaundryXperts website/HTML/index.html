@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"  href="C:\Users\Gagan\Desktop\LaundryXperts website\CSS\style_login.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-wrapper sign-in">
+            <form name="Form1_sign_in" action="">
+                <h2>Login</h2>
+                <div class="input-group">
+                    <input type="text" id="Username1" required>
+                    <label for="">Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="Password1" required>
+                    <label for="">Password</label>
+                </div>
+                <div class="remember">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+                <button type="button" id="button1" onclick="check()">Login</button>
+                <div class="signUp-link">
+                    <p>Don't have an account? <a href="#" class ="signUpBtn-link">Sign Up</a></p>
+
+                </div>
+
+            </form>
+        </div>
+
+        <div class="form-wrapper sign-up">
+            <form action="" >
+                <h2>Sign Up</h2>
+                <div class="input-group">
+                    <input type="text" id="Username2" required>
+                    <label for="" >Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" required>
+                    <label for="">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="Password2" required>
+                    <label for="">Password</label>
+                </div>
+                <div class="remember">
+                    <label><input type="checkbox" required> 
+                        I Agree to the terms and conditions
+                    </label>
+                </div>
+                <button type="button" id="button2" onclick="saveall()">Save Credentials</button>
+                <div class="signUp-link">
+                    <p>Already have an account? <a href="#" class ="signInBtn-link">Sign In</a></p>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
+
+    <script src="C:\Users\Gagan\Desktop\LaundryXperts website\JS\js_login.js"></script>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry-Xperts Home</title>
+    
+
+    <link rel="stylesheet" href="C:\Users\Gagan\Desktop\LaundryXperts website\CSS\contactus.css">
+    <link rel="stylesheet" href="C:\Users\Gagan\Desktop\LaundryXperts website\CSS\style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+    <style>
+        html{
+            background-color: #0f0f0f;
+            scrollbar-width: none;
+        }
+
+        .bgimage{
+            background-image: url('C:/Users/Gagan/Desktop/LaundryXperts website/Images/bgimage.png');
+            position: absolute;
+            transform: translateY(-50px);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+        }
+
+        /* Quote and Typewriter */
+        .quote{
+            position:absolute;
+            text-shadow:0 5px 24px #0f0f0f;
+            top:32rem;
+            left:15rem;
+            color:white;
+            font-size:4rem;
+            z-index:0;
+        }
+
+        /* Typewriter */
+        .typechange{
+            color: #fe8040;
+        }
+
+
+        /* Featured */
+        .mainfeatured{
+            top:0;
+            left:0;
+            /* height: 100vh; */
+            /* overflow:hidden; */
+            z-index: 1;
+        }
+
+        .featuredbg {
+            margin-top: 770px;
+            height: 80px;
+            background-color: #fe8040;
+            color: white;
+            text-align: center;
+            font-size: 50px;
+            z-index: 1;
+        }
+
+        .featuredcontainer {
+            height: 500px;
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateY(0);
+            background-color: #0f0f0ff0;
+            /* border-radius: 10px; */
+            z-index: 1;
+            border-top:#fe8040 2px solid;
+        }
+
+        .featuredicon {
+            cursor: pointer;
+        }
+
+        .featureditem {
+            flex-grow: 1;
+            margin: 20px;
+            border: 2px #303030 solid;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fe8040;
+        }
+
+        .featuredlist{
+            list-style:none;
+            color:#cccccc;
+            margin-left:10%;
+            font-size:20px;
+            line-height: 3rem;
+        }
+
+        .featured__button{
+            background-color:#fe8040;
+            color:black;
+            padding:10px;
+            width:90%;
+            margin-right:5%;
+            cursor:pointer;
+            margin-top:130px;
+            transition: scale 0.5s ease;
+        }
+
+        .featured__button:hover{
+            scale:1.05;
+        }
+
+        .ft{
+            color:#808080;
+            font-size:2rem;
+            text-align:center;
+            background-color:black;
+        }
+
+    </style>
+</head>
+
+<header>
+    <nav class="navbar">
+        
+        <a href="#" class="navlogo">Laundry-Xperts</a>
+
+        <div class="navmenu" id="nav__menu">
+            <ul class="navlist" id="nav__list">
+                <li class="navitem">
+                    <a href="page2_home.html" class="navlink">Home</a>
+                </li>
+                <li class="navitem">
+                    <a href="addtocart.html" class="navlink">Cart</a>
+                </li>
+                <li class="navitem">
+                    <a href="about_us.html" class="navlink">About us</a>
+                </li>
+                <li class="navitem">
+                    <a href="contactus.html" class="navlink">Contact-Us</a>
+                </li>
+            </ul>
+            <div class="navclose">
+                <i class="ri-close-fill" id="nav__close"></i>
+            </div>
+        </div>
+        
+        <div class="navops">
+            <i class="ri-search-2-line" id="nav__search"></i>
+            <i class="ri-user-3-line" id="nav__login"></i>
+            <div class="navtoggle">
+                <i class="ri-menu-3-line" id="nav__toggle"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="bgimage"> </div>
+
+    <div class="search" id="search">
+        <form class="search__form">
+            <i class="ri-search-2-line" id="searchicon"></i>
+            <input type="search" class="search_input" id="searchinput" placeholder="What are you searching for?" onkeypress="handlekeypress(event)">
+        </form>
+        <i class="ri-close-line" id="search_close"></i>
+    </div>
+
+    <div class="login" id="login">
+        <form  class="loginform">
+           <h2 class="logintitle">Welcome User</h2>
+           <i class="ri-user-smile-fill" id="usericon"></i>
+           <br>
+           <div class="logingroup">
+                <div class="diamond">
+                    <i class="ri-vip-diamond-line dlogo"></i>
+                    &nbsp;&nbsp;Diamond Customer
+                </div>
+           </div>
+
+           <div>
+                <button type="button" class="loginbutton" id="logout"> Log Out </button>
+           </div>
+        </form>
+
+        <i class="ri-close-line" id="login_close"></i>
+     </div>
+
+     <div class="quote">
+        Your One Stop Solution for all Laundry Needs
+        
+        <div class="typechange"> </div>
+     </div>
+    
+     <div class="mainfeatured">
+        <div class="featuredbg" id="featuredbtn">
+            <i class="ri-arrow-up-wide-line featuredicon"></i>
+        </div>
+        <div class="ft">
+            Plans Only for YOU
+        </div>
+        <div class="featuredcontainer" id="featured"> 
+            <div class="featureditem">
+                <h1> Essential </h1>
+                <div class="featuredlist">
+                    <li >Wash, Dry, and Fold Package </li>
+                    <li> Dry Cleaning </li>
+                    <li> Alterations and Tailoring </li>
+                </div>
+                
+                <button class="featured__button" onclick="gocart()" id="cbtn1"> Explore </button>
+            </div>
+       
+            <div class="featureditem">
+                <h1>Convenience</h1>
+                <div class="featuredlist">
+                    <li>Pickup and Delivery Service</li>
+                    <li>Subscription or Membership Plans</li>
+                    <li>VIP or Premium Services</li>
+                </div>
+                <button class="featured__button" onclick="gocart()" id="cbtn2"> Explore </button>
+            </div>
+       
+            <div class="featureditem">
+                <h1> Speciality </h1>
+                <div class="featuredlist">
+                    <li>Specialty Cleaning </li>
+                    <li>Eco-Friendly or Sustainable Options</li>
+                    <li>Specialty Bedding Cleaning</li>
+                </div>
+                <button class="featured__button" onclick="gocart()" id="cbtn3"> Explore </button>
+            </div>
+        </div>
+     </div>
+</body>
+
+<footer class="bg-dark text-white pt-5 pb-4" style="font-size: 18px;">
+    <div class="container text-md-left">
+      <div class="row text-md-left">
+        <div class="col mt-3" style="color:#808080;">
+          <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Get to know us</h5>
+          <p>
+            <a href="./about_us.html" class="text-white" style="text-decoration: none;">About us</a>
+          </p>
+          <p>
+            <a href="about_us.html" class="text-white" style="text-decoration: none;">Careers</a>
+          </p>
+          <p>
+            <a href="./cares.html" class="text-white" style="text-decoration: none;">Laundry Xperts cares</a>
+          </p>
+          <p>
+            <a href="about_us.html" class="text-white" style="text-decoration: none;">Our Partners</a>
+          </p>
+        </div>
+        <div class="col mt-3"  style="color:#808080;">
+          <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Let us help you</h5>
+            <p>
+              <a href="./paypolicy.html" class="text-white" style="text-decoration: none;">Payments</a>
+            </p>
+            <p>
+              <a href="./shippolicy.html" class="text-white" style="text-decoration: none;">Shipping</a>
+            </p>
+            <p>
+              <a href="contactus.html" class="text-white" style="text-decoration: none;">Report an issue</a>
+            </p>
+            <p>
+              <a href="contactus.html" class="text-white" style="text-decoration: none;">Contact us</a>
+            </p>
+        </div>
+        <div class="col mt-3" style="color:#808080;">
+          <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Policy</h5>
+            <p>
+              <a href="" class="text-white" style="text-decoration: none;">Return policy</a>
+            </p>
+            <p>
+              <a href="" class="text-white" style="text-decoration: none;">Time of use</a>
+            </p>
+            <p>
+              <a href="./privacy.html" class="text-white" style="text-decoration: none;">Privacy</a>
+            </p>
+        </div>
+        <div class="col mt-3" style="color:#808080;">
+          <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Make money with us</h5>
+            <p>
+            <p>
+              <a href="./Partner Stores.html" class="text-white" style="text-decoration: none;">Become our partner</a>
+            </p>
+        </div>
+        <div class="col mt-3" style="color:#808080;">
+          <div>
+            <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Connect with us</h5>
+            <p>
+              <a href="https://www.facebook.com" class="text-white" style="text-decoration: none;">
+                <i class="fab fa-facebook-square"></i>
+                Facebook
+              </a>
+            </p>
+            <p>
+              <a href="https://twitter.com" class="text-white" style="text-decoration: none;">
+                <i class="fab fa-twitter-square"></i>
+                Twitter
+              </a>
+            </p>
+            <p>
+              <a href="https://instagram.com" class="text-white" style="text-decoration: none;">
+                <i class="fab fa-instagram-square"></i>
+                Instagram
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr class="mb-4">
+      <div class="row align-items-center">
+        <div class="text-center">
+          Copyright &copy; and &reg; Since 1995 Under Laundry-Xperts.com | Gagan Kothari & Ansh Desai
+        </div>
+      </div>
+    </div>
+    <a class="scrollToTop" href="#"></a>
+  </footer>
+  
+
+<script>
+    const navMenu = document.getElementById('nav__menu'),
+    navToggle = document.getElementById('nav__toggle'),
+    navClose = document.getElementById('nav__close');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu');
+    });
+
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu');
+    });
+
+    // Search
+
+    const search = document.getElementById('search'),
+        searchButton = document.getElementById('nav__search'),
+        searchClose = document.getElementById('search_close');
+
+    searchButton.addEventListener('click', () => {
+        search.classList.add('show-search');
+    });
+
+    searchClose.addEventListener('click', () => {
+        search.classList.remove('show-search');
+    });
+
+    // login
+
+    const login = document.getElementById('login');
+    const loginButton = document.getElementById('nav__login');
+    const loginClose = document.getElementById('login_close');
+
+    loginButton.addEventListener('click', () => {
+        login.classList.add('show-login');
+    });
+
+    loginClose.addEventListener('click', () => {
+        login.classList.remove('show-login');
+    });
+
+    // logout
+
+    var logout_button=document.getElementById("logout");
+
+    logout_button.addEventListener("click",function(){
+        window.location.href="index.html";
+    });
+
+    // typewriter
+
+    const div = document.querySelector(".typechange")
+    const typetext = ["Dry Cleaning", "", "Sofa Cleaning", "", "Steaming and Pressing","","Polishing", "", "Supplies"]
+    
+    function textTypingEffect(element, typetext, i = 0, j = 0, removing = false) {
+        if (i < typetext.length) {
+            if (!removing && j < typetext[i].length) { 
+                element.textContent += typetext[i][j];
+                setTimeout(() => {
+                    textTypingEffect(element, typetext, i, j + 1);
+                }, 100);
+            } 
+            else if (removing && element.textContent.length > 0) {
+                setTimeout(() => {
+                    element.textContent = element.textContent.slice(0, -1);
+                    textTypingEffect(element, typetext, i, j, true);
+                }, 50);
+            } 
+            else {
+                setTimeout(() => {
+                    textTypingEffect(element, typetext, (i + 1) % typetext.length, 0, !removing);
+                }, 500);
+            }
+        }
+    }
+    textTypingEffect(div, typetext)
+
+    // Seachbar
+    function searchfile(){
+        var searchinp = document.getElementById('searchinput').value
+
+        if (searchinp == "cart"){
+            window.location.href = "addtocart.html"
+        }
+    }
+
+    function handlekeypress(event){
+        if(event.key === "Enter"){
+            searchfile()
+        }
+    }
+
+    document.getElementById('searchinput').addEventListener('keypress', handlekeypress);
+
+    // gotocart
+
+    var cart1 = document.getElementById("cbtn1");
+    var cart2 = document.getElementById("cbtn2");
+    var cart3 = document.getElementById("cbtn3");
+
+    cart1.addEventListener("click",function(){
+        window.location.href="cart.html";
+    });
+
+    cart2.addEventListener("click",function(){
+        window.location.href="cart.html";
+    });
+
+    cart3.addEventListener("click",function(){
+        window.location.href="cart.html";
+    });
+
+</script>
+
+</html>

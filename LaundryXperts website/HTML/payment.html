@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Laundry-Xperts</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="C:\Users\Gagan\Desktop\LaundryXperts website\CSS\style.css">
+        <link rel="icon" href="./Images/favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/60fedd8558.js" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/60fedd8558.js" crossorigin="anonymous"></script>    
+<title>LaundryXperts</title>
+<header>
+  <nav class="navbar">
+      
+      <a href="#" class="navlogo">Laundry-Xperts</a>
+
+      <div class="navmenu" id="nav__menu">
+          <ul class="navlist" id="nav__list">
+              <li class="navitem">
+                  <a href="page2_home.html" class="navlink">Home</a>
+              </li>
+              <li class="navitem">
+                  <a href="addtocart.html" class="navlink">Cart</a>
+              </li>
+              <li class="navitem">
+                  <a href="about_us.html" class="navlink">About us</a>
+              </li>
+              <li class="navitem">
+                  <a href="contactus.html" class="navlink">Contact-Us</a>
+              </li>
+          </ul>
+          <div class="navclose">
+              <i class="ri-close-fill" id="nav__close"></i>
+          </div>
+      </div>
+      
+      <div class="navops">
+          <i class="ri-search-2-line" id="nav__search"></i>
+          <i class="ri-user-3-line" id="nav__login"></i>
+          <div class="navtoggle">
+              <i class="ri-menu-3-line" id="nav__toggle"></i>
+          </div>
+      </div>
+  </nav>
+</header>
+
+<style>
+  html{
+    scrollbar-width: none;
+  }
+  body{
+    background-color: #0f0f0f;
+  }
+  header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
+            z-index: 3;
+        }
+
+        .navmenu{
+            list-style-type: none;
+            padding: 0;
+            margin-bottom:0;
+        }
+
+        .navbar{
+            height: var(--header-height);
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navlogo{
+            margin-left:15px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            text-decoration:none;
+            color: white;
+            font-weight: var(--font-semi-bold);
+            transition: color 0.4s;
+        }
+        .navops{
+            display:flex;
+            align-items:center;
+            column-gap: 1rem;
+        }
+
+        #nav__search,
+        #nav__toggle,
+        #nav__login{
+            font-size: 2.5rem;
+            color: white;
+            cursor:pointer;
+            transition: color 0.4s;
+        }
+
+        #nav__close{
+            color:#0f0f0f;
+            font-size:2rem;
+        }
+
+        :is(#nav__search,
+        #nav__toggle,
+        #nav__login,
+        #nav__close,
+        .navlink):hover{
+            /* color: rgb(37, 167, 214); */
+            color:#fe8040;
+        }
+
+        @media screen {
+            .navmenu{
+                position:fixed;
+                top:-100%;
+                left:0;
+                background-color: white;
+                border-radius:5px;
+                width: 100%;
+                padding-block: 4.5rem 4rem;
+                transition: top 0.4s;
+            }
+        }
+
+        .navlist{
+            display:flex;
+            flex-direction: column;
+            row-gap: 2.5rem;
+            font-size:1.5rem;
+            text-align: center;
+            list-style:none;
+        }
+
+        .navlink{
+            color: var(--title-color);
+            font-weight: var(--font-semi-bold);
+            transition: color 0.4s;
+            text-decoration: none;
+            list-style:none;
+        }
+
+        .navclose{
+            position:absolute;
+            top: 1.15rem;
+            right:1.5rem;
+        }
+
+        .show-menu{
+            top:0;
+        }
+
+        /* Search */
+        .search,.login{
+            position: fixed;
+            top:0;
+            left:0;
+            width:99%;
+            height:100%;
+            z-index: 4;
+            backdrop-filter: blur(10px);
+            padding: 8rem 0.5rem 0;
+            opacity:0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+
+        .search__form{
+            display:flex;
+            align-items: center;
+            column-gap: 1rem;
+            background-color: white;
+            box-shadow:0 8px 32px hsla(230, 75%, 32%, .2);
+            padding-inline: 1rem;
+            border-radius:0.5rem;
+            transform:translateY(-1rem);
+            transition: transform 0.5s;
+        }
+
+        .search_input{
+            width:100%;
+            border:none;
+            padding-block:1rem;
+            background-color: var(--container-color);
+            color: var(--text-color);
+            outline:none;
+        }
+
+        .search_input::placeholder{
+            color:var(--text-color);
+        }
+
+        #searchicon{
+            font-size:1.25rem;
+            padding-block: 1rem;
+            color:var(--title-color);
+            color: var(--text-color);
+            
+        }
+
+        #search_close,#login_close{
+            position:absolute;
+            top:2rem;
+            right:2rem;
+            cursor:pointer;
+            color: white;
+            font-size:1.5rem;
+
+        }
+        .show-search{
+            opacity:1;
+            pointer-events:initial;
+        }
+        .show-search.search__form{
+            transform: translateY(0);
+        }
+
+        /* Login */
+        .loginform,
+        .logingroup{
+            display:grid;
+            margin:auto;
+        }
+
+        .loginform{
+            background-color: rgba(255, 255, 255, 0.615);
+            padding: 2rem;
+            width:30%;
+            border-radius:1rem;
+            box-shadow: 0 8px 32px hsla(230, 75%, 32%, .2);
+            row-gap:1.5rem;
+            text-align:center;
+            transform: translateY(-1rem);
+            transition:transform 0.5s;
+        }
+
+        .logintitle{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size:1.5rem;
+        }
+
+        .logingroup{
+            row-gap:1rem;
+        }
+
+        .loginlabel{
+            display:flex;
+            text-align:initial;
+            margin-bottom: 0.25rem;
+        }
+
+        .loginbutton{
+            display:inline-block;
+            background-color:#fe8040;
+            color:white;
+            width:90%;
+            margin-top:1rem;
+            padding:1rem;
+            border-radius:0.5rem;
+            cursor:pointer;
+            transition: box-shadow 0.5s;
+        }
+
+        .loginbutton:hover{
+            box-shadow: 0 2px 20px rgb(24, 63, 72);
+        }
+
+        .show-login{
+            opacity:1;
+            pointer-events: initial;
+        }
+
+        .show-login.loginform{
+            transform: translateY(0);
+        }
+
+        #usericon{
+            transform:scale(4);
+        }
+
+        .diamond{
+            display:flex;
+            transform: scale(1.5)
+        }
+        
+        .dlogo{
+            color: rgb(0, 136, 255);
+        }
+
+        p{
+          color: #CCCCCC;
+        }
+        h1{
+          color:#fe8040
+        }
+        h2{
+          color:#fe8040
+        }
+        h3{
+          color:#fe8040
+        }
+        h4{
+          color:#fe8040
+        }
+        h5{
+          color:#fe8040
+        }
+        h6{
+          color:#fe8040
+        }
+        label{
+          color: #fe8040;
+        }
+
+</style>
+  </head>
+
+  
+<body>
+
+  <div class="search" id="search">
+      <form class="search__form">
+          <i class="ri-search-2-line" id="searchicon"></i>
+          <input type="search" class="search_input" id="searchinput" placeholder="What are you searching for?" onkeypress="handlekeypress(event)">
+      </form>
+      <i class="ri-close-line" id="search_close"></i>
+  </div>
+
+  <div class="login" id="login">
+      <form  class="loginform">
+         <h2 class="logintitle">Welcome User</h2>
+         <i class="ri-user-smile-fill" id="usericon"></i>
+         <br>
+         <div class="logingroup">
+              <div class="diamond">
+                  <i class="ri-vip-diamond-line dlogo"></i>
+                  &nbsp;&nbsp;Diamond Customer
+              </div>
+         </div>
+
+         <div>
+              <button type="button" class="loginbutton" id="logout"> Log Out </button>
+         </div>
+      </form>
+
+      <i class="ri-close-line" id="login_close"></i>
+   </div>
+     <section>
+      <div style="margin:20px 20px;" class="row">
+        <div style="padding:20px 30px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;margin-right: 20px;margin-left: 35px;width: 58% !important;" class="col-md-7 box-sz">
+          <h3 class="mid1-sz" style="font-weight: 450!important;padding: 0px!important;margin-top: 100px;">Select a Payment Method</h3>
+          <div style="border:1px solid #fe8040;padding:10px 20px;margin-top: 15px">
+            <div style="border-bottom:1px solid #fe8040 " class="row">
+              <div class="col-md-6">
+                <p style="font-size: 17px!important;font-weight: 500!important">Your saved debit and credit cards</p>
+              </div>
+              <div class="col-md-3">
+                <p style="font-size: 17px!important;font-weight: 500!important">Name on Card</p>
+              </div>
+              <div class="col-md-3">
+                <p style="font-size: 17px!important;font-weight: 500!important">Expiry Date</p>
+              </div>
+            </div>
+            <div class="cards-users">
+              
+            </div>
+            
+            <p style="font-size: 17px!important;font-weight: 500!important;margin-top: 15px;border-bottom:1px solid #E2E5DE;padding-bottom: 17px ">Another Payment Methods</p>
+            <div class="form-check">
+              <input id="card" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label style="font-size:14px!important" class="form-check-label" for="flexRadioDefault1">
+                <span style="font-weight: 500!important">Add Debit/Credit/ATM Card</span><br><img style="height:23px;margin-left: 5px" src="Images/rupay.jpg"><img style="height:23px;" src="Images/visa.jpg"><img style="height:23px;" src="Images/mastercard.jpg"><img style="height:23px;" src="Images/maestro.png"><img style="height:23px;" src="Images/bajaj.jpg">
+              </label>
+              <div style="margin-top: 20px;margin-bottom: 15px" class="cvv">
+                <span style="font-size:14px!important;margin-left: 5px;font-weight: 500!important;color: #CCCCCC;">Card Number : </span>
+                <input id="card-number" style="width: 305px" type="text" required>
+                <br>
+                <div style="margin-top: 15px">
+                  <span style="font-size:14px!important;margin-left: 5px;font-weight: 500!important;">Name on Card : </span>
+                  <input id="card-name" style="width: 150px" type="text" required>
+                  <span style="font-size:14px!important;margin-left: 20px;font-weight: 500!important;">Expires : </span>
+                  <input id="card-expiry" style="width: 70px" type="text" required>
+                </div>
+                
+                <button id="card-submit" type="button" class="btn btn-sm btn-warning">Add Card</button>
+                <br>
+              </div>
+            </div>
+            <div style="margin-top: 24px" class="form-check">
+              <input id="upi" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label style="font-size:14px!important" class="form-check-label" for="flexRadioDefault1">
+                <span style="font-weight: 500!important">UPI</span><br><img style="height:23px;margin-left: 5px" src="Images/gpay.jpg"><img style="height:23px;" src="Images/phonepe.jpg"><img style="height:23px;margin-left: 7px" src="Images/paytm.jpg"><img style="height:23px;margin-left: 7px" src="Images/mobikwik.png">
+              </label>
+              <div style="margin-top: 20px!important" class="cvv">
+                <span style="font-size:14px!important;margin-left: 5px;font-weight: 500!important">Enter UPI Id : </span>
+                <input style="width: 180px" type="text" placeholder="MobileNumber@upi" required>
+                <br>
+                <button type="button" class="btn btn-sm btn-warning">Verify</button>
+                <br>
+              </div>
+            </div>
+            <div style="margin-top: 24px" class="form-check">
+              <input id="net" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Net Banking
+                <br>
+                <select style="margin-top: 15px" class="form-select" aria-label="Disabled select example">
+                  <option selected >Choose a Bank</option>
+                  <option value="1">HDFC Bank</option>
+                  <option value="2">Bank Of Baroda</option>
+                  <option value="3">Axis Bank</option>
+                  <option value="4">ICICI Bank</option>
+                  <option value="5">Kotak Bank</option>
+                </select>
+              </label>
+            </div>
+            <div style="margin-top: 24px" class="form-check">
+              <input id="emi" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                EMI
+              </label>
+            </div>
+            <div style="margin-top: 24px" class="form-check">
+              <input id="cod" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Cash on Delivery
+              </label>
+            </div>
+          </div>
+          
+        </div>
+        <div style="width: 36% !important;" class="col-md-4">
+          <div class="box-sz" style="padding:20px 30px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <h3 class="mid1-sz" style="font-weight: 450!important;padding: 0px!important">Total Amount</h3>
+            <div class="box1-sz" style="margin-top: 15px;padding: 15px 0px;border-top:1.5px solid #E2E5DE">
+              <p class="mid3-sz" style="color:#fe8040"><i class="fa fa-check-circle" aria-hidden="true"></i> Your order is eligible for FREE Delivery.</p>
+              <div>
+                <h5 class="mid2-sz" style="font-weight: 500!important;margin:0!important;float: left;">Item Total: </h5>
+                <h5 class="mid2-sz" style="font-weight: 400!important;margin:0!important;float: right;"><i class="fa fa-inr" aria-hidden="true"></i>  <span id="total">40000</span></h5>
+              </div>
+              <br>
+              <div class="df-sz" style="margin-top: 15px">
+                <h5 class="mid2-sz" style="font-weight: 500!important;margin:0!important;float: left;">Taxes & Charges: </h5>
+                <h5 class="mid2-sz" style="font-weight: 400!important;margin:0!important;float: right;"><i class="fa fa-inr" aria-hidden="true"></i>  <span>100</span></h5>
+              </div>
+              <br>
+              <div class="box1-sz" style="margin-top: 15px;padding: 15px 0px;border-top:1.5px solid #fe8040">
+                <h5 class="mid2-sz" style="font-weight: 500!important;margin:0!important;float: left;">To Pay: </h5>
+                <h5 class="mid2-sz" style="font-weight: 400!important;margin:0!important;float: right;"><i class="fa fa-inr" aria-hidden="true"></i>  <span id="totaltopay">41000</span></h5>
+              </div>
+              <br>
+              <div style="display: flex;justify-content: center;">
+                <a class="btn btn-success" href="https://rzp.io/l/fT8PgCx" role="button">Buy Now</a>
+              </div>
+            </div> 
+          </div>
+          <div class="box-sz" style="padding:20px 30px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;margin-top: 20px">
+            <h5 class="mid2-sz" style="font-weight: 500!important;margin:0!important;color:#fe8040"><i class="fa fa-envelope" aria-hidden="true"></i> Offers</h5>
+            <div style="margin-top: 15px">
+              <span style="font-weight: 500">5% Unlimited Cashback on Apni Dukaan Axis Credit Card</span>
+              <br>
+              <span style="color:fe8040">T&C</span>
+            </div>
+            <div style="margin-top: 15px">
+              <span style="font-weight: 500">Flat Rs.100 off on First Apni Dukaan Pay Later App</span>
+              <br>
+              <span style="color:#fe8040">T&C</span>
+            </div>
+            
+          </div>
+          <h5 class="mid2-sz" style="font-weight: 500!important;margin:0!important;color:grey;margin-top: 25px!important;margin-left:20px!important"><i style="margin-right: 7px" class="fa fa-shield" aria-hidden="true"></i> Safe and Secure Payments. Easy returns. 100%  Authentic products.</h5>
+          
+        </div>
+      </div>
+    </section> 
+    <footer class="bg-dark text-white pt-5 pb-4" style="font-size: 18px;">
+      <div class="container text-md-left">
+        <div class="row text-md-left">
+          <div class="col mt-3" style="color:#808080;">
+            <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Get to know us</h5>
+            <p>
+              <a href="./about.html" class="text-white" style="text-decoration: none;">About us</a>
+            </p>
+            <p>
+              <a href="./career.html" class="text-white" style="text-decoration: none;">Careers</a>
+            </p>
+            <p>
+              <a href="" class="text-white" style="text-decoration: none;">Press releases</a>
+            </p>
+            <p>
+              <a href="./cares.html" class="text-white" style="text-decoration: none;">Apni Dukaan cares</a>
+            </p>
+            <p>
+              <a href="./Partner Stores.html" class="text-white" style="text-decoration: none;">Our Partners</a>
+            </p>
+          </div>
+          <div class="col mt-3"  style="color:#808080;">
+            <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Let us help you</h5>
+              <p>
+                <a href="./paypolicy.html" class="text-white" style="text-decoration: none;">Payments</a>
+              </p>
+              <p>
+                <a href="./shippolicy.html" class="text-white" style="text-decoration: none;">Shipping</a>
+              </p>
+              <p>
+                <a href="" class="text-white" style="text-decoration: none;">Cancellation and Returns</a>
+              </p>
+              <p>
+                <a href="" class="text-white" style="text-decoration: none;">Report an issue</a>
+              </p>
+              <p>
+                <a href="./contactus.html" class="text-white" style="text-decoration: none;">Contact us</a>
+              </p>
+          </div>
+          <div class="col mt-3" style="color:#808080;">
+            <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Policy</h5>
+              <p>
+                <a href="" class="text-white" style="text-decoration: none;">Return policy</a>
+              </p>
+              <p>
+                <a href="" class="text-white" style="text-decoration: none;">Time of use</a>
+              </p>
+              <p>
+                <a href="./privacy.html" class="text-white" style="text-decoration: none;">Privacy</a>
+              </p>
+          </div>
+          <div class="col mt-3" style="color:#808080;">
+            <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Make money with us</h5>
+              <p>
+                <a href="" class="text-white" style="text-decoration: none;">Sell on Apni Dukaan</a>
+              </p>
+              <p>
+                <a href="" class="text-white" style="text-decoration: none;">Advertise your products</a>
+              </p>
+              <p>
+                <a href="./Partner Stores.html" class="text-white" style="text-decoration: none;">Become our partner</a>
+              </p>
+              <p>
+                <a href="" class="text-white" style="text-decoration: none;">Join our mission</a>
+              </p>
+          </div>
+          <div class="col mt-3" style="color:#808080;">
+            <div>
+              <h5 class="text-uppercase mb-4 font-weight-bold md-sz">Connect with us</h5>
+              <p>
+                <a href="https://www.facebook.com" class="text-white" style="text-decoration: none;">
+                  <i class="fab fa-facebook-square"></i>
+                  Facebook
+                </a>
+              </p>
+              <p>
+                <a href="https://twitter.com" class="text-white" style="text-decoration: none;">
+                  <i class="fab fa-twitter-square"></i>
+                  Twitter
+                </a>
+              </p>
+              <p>
+                <a href="https://instagram.com" class="text-white" style="text-decoration: none;">
+                  <i class="fab fa-instagram-square"></i>
+                  Instagram
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <div class="row align-items-center">
+          <div class="text-center">
+            Copyright &copy; and &reg; Since 2020 Under ApniDukaan.com | Qazi Maaz Arshad
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- scroll to top button -->
+    <button id = "btnScrollToTop">
+      <i class="material-icons">arrow_upward</i>
+  </button>
+  
+  <script>
+      const btnScrollToTop = document.querySelector("#btnScrollToTop");
+       btnScrollToTop.addEventListener("click", function () {
+          window.scrollTo(0,0); }
+      );
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>
+          var cards=[{'number':'4362436245735921','name':'Ram Sharma','expires':'11/24'},{'number':'8764324645374547','name':'Vikas Sharma','expires':'08/24'},{'number':'4362436245739874','name':'Ishant Sharma','expires':'04/24'}];
+          for(let i=0;i<cards.length;i++){
+            $('.cards-users').append('<div style="margin-top: 12px" class="row"><div class="col-md-6"><div class="form-check"><input class="form-check-input cards-ids" type="radio" name="flexRadioDefault" id="flexRadioDefault1"><label style="font-size:14px!important" class="form-check-label" for="flexRadioDefault1"><span style="font-weight: 500!important">Bank of Baroda Debit Card</span> ending in '+cards[i].number.substring(12,16)+'<img style="height:23px;margin-left: 5px" src="Images/rupay.jpg"></label></div></div><div class="col-md-3"><p style="font-size:14px!important;color:grey">'+cards[i].name+'</p></div><div class="col-md-3"><p style="font-size:14px!important;color:grey">'+cards[i].expires+'</p></div><div class="cvv"><span style="font-size:14px!important;margin-left: 25px;font-weight: 500!important">Enter CVV : </span><input style="width: 80px" type="text" required></div></div>');
+          }
+          $('.cvv').each(function(){
+            $(this).hide();
+          })
+          $(document).on('click','.cards-ids',function(){
+            $('.cvv').each(function(){
+              $(this).hide();
+            });
+            $(this).parent('div').parent('div').parent('div').children('.cvv').show();
+          });
+          $("#card").on('click',function(){
+            $('.cvv').each(function(){
+              $(this).hide();
+            });
+            $(this).parent('div').children('.cvv').show();
+          });
+          $("#upi").on('click',function(){
+            $('.cvv').each(function(){
+              $(this).hide();
+            });
+            $(this).parent('div').children('.cvv').show();
+          });
+          $("#emi").on('click',function(){
+            $('.cvv').each(function(){
+              $(this).hide();
+            });
+          });
+          $("#cod").on('click',function(){
+            $('.cvv').each(function(){
+              $(this).hide();
+            });
+          });
+          $("#net").on('click',function(){
+            $('.cvv').each(function(){
+              $(this).hide();
+            });
+          });
+          $('#card-submit').on('click',function(){
+            var obj={'name':' ','number':' ','expires':' '};
+            obj.number=$('#card-number').val();
+            obj.name=$('#card-name').val();
+            obj.expires=$('#card-expiry').val();
+            $('#card-number').val('');
+            $('#card-name').val('');
+            $('#card-expiry').val('');
+            $('.cards-users').append('<div style="margin-top: 12px" class="row"><div class="col-md-6"><div class="form-check"><input class="form-check-input cards-ids" type="radio" name="flexRadioDefault" id="flexRadioDefault1"><label style="font-size:14px!important" class="form-check-label" for="flexRadioDefault1"><span style="font-weight: 500!important">Bank of Baroda Debit Card</span> ending in '+obj.number.substring(12,16)+'<img style="height:23px;margin-left: 5px" src="Images/rupay.jpg"></label></div></div><div class="col-md-3"><p style="font-size:14px!important;color:grey">'+obj.name+'</p></div><div class="col-md-3"><p style="font-size:14px!important;color:grey">'+obj.expires+'</p></div><div class="cvv"><span style="font-size:14px!important;margin-left: 25px;font-weight: 500!important">Enter CVV : </span><input style="width: 80px" type="text" required></div></div>');
+            cards.push(obj);
+            $('.cvv').each(function(){
+              $(this).hide();
+            });
+          })
+        </script>
+        <script>
+          const navMenu = document.getElementById('nav__menu'),
+    navToggle = document.getElementById('nav__toggle'),
+    navClose = document.getElementById('nav__close');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu');
+    });
+
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu');
+    });
+
+    // Search
+
+    const search = document.getElementById('search'),
+        searchButton = document.getElementById('nav__search'),
+        searchClose = document.getElementById('search_close');
+
+    searchButton.addEventListener('click', () => {
+        search.classList.add('show-search');
+    });
+
+    searchClose.addEventListener('click', () => {
+        search.classList.remove('show-search');
+    });
+
+    // login
+
+    const login = document.getElementById('login');
+    const loginButton = document.getElementById('nav__login');
+    const loginClose = document.getElementById('login_close');
+
+    loginButton.addEventListener('click', () => {
+        login.classList.add('show-login');
+    });
+
+    loginClose.addEventListener('click', () => {
+        login.classList.remove('show-login');
+    });
+
+    // logout
+
+    var logout_button=document.getElementById("logout");
+
+    logout_button.addEventListener("click",function(){
+        window.location.href="index.html";
+    });
+        </script>
+  </body>
+</html>
